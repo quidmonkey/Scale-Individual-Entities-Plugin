@@ -14,10 +14,10 @@ ig.module(
  
 ig.Entity.inject({
 	
-	scale: { x: 1, y: 1 },
-	_offset: { x: 0, y: 0 },
-	_scale: { x: 1, y: 1 },
-	_size: { x: 0, y: 0 },
+	scale: { x: 1, y: 1 },		//user-defined scale
+	_offset: { x: 0, y: 0 },	//cached offset prior to scaling
+	_scale: { x: 1, y: 1 },		//scale relative to ig.system.scale
+	_size: { x: 0, y: 0 },		//cached size prior to scaling
  
 	init: function( x, y, settings ){
 		this.parent( x, y, settings );
