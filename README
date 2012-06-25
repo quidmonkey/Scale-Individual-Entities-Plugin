@@ -10,7 +10,7 @@ this.scale.x = 2;
 this.scale.y = 2;
 this.setScale();
 
-Both methods will double the size of your entity. Be aware that an individual entity's scaling is de-coupled from the game's scaling. By default, this.scale.x = 1 & this.scale.y = 1 for each entity; so if you set the game's scale = 2, then all entities will be half the size of the game by default (because game scale = 2 but entity scale = 1). For this reason, t is recommended that you set the game's scale = 1 when using this plugin, but it isn't a requirement.
+Both methods will double the size of your entity. Be aware that an individual entity's scaling is de-coupled from the game's scaling. By default, this.scale.x = 1 & this.scale.y = 1 for each entity; so if you set the game's scale = 2, then all entities will be half the size of the game by default (because game scale = 2 but entity scale = 1). For this reason, it is recommended that you set the game's scale = 1 when using this plugin, but it isn't a requirement.
 
 Also be aware that implementing this plugin will incur a modest performance hit.
 
