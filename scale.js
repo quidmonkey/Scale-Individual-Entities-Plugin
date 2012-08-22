@@ -31,27 +31,39 @@ ig.Entity.inject({
 	draw: function(){
 		var ctx = ig.system.context;
 		ctx.save();
-		ctx.translate(	ig.system.getDrawPos( this.pos.x.round() - this.offset.x - ig.game.screen.x ),
-				 		ig.system.getDrawPos( this.pos.y.round() - this.offset.y - ig.game.screen.y ) );
+		ctx.translate(
+			ig.system.getDrawPos( this.pos.x.round() - this.offset.x - ig.game.screen.x ),
+			ig.system.getDrawPos( this.pos.y.round() - this.offset.y - ig.game.screen.y )
+		);
 		ctx.scale( this._scale.x, this._scale.y );
 		this.currentAnim.draw( 0, 0 );
 		ctx.restore();
 	},
 
 	setScale: function( x, y ){
-		var old = {
-			x: this.size.x, y: this.size.y
-		};
+		//cache size prior to scaling
+		var oX = this.size.x, 
+			oY = this.size.y;
+
+		//set scale
 		this.scale.x = x || this.scale.x;
 		this.scale.y = y || this.scale.y;
+
+		//set scale relative to game scale
 		this._scale.x = this.scale.x / ig.system.scale;
 		this._scale.y = this.scale.y / ig.system.scale;
+
+		//scale offset
 		this.offset.x = this._offset.x * this._scale.x;
 		this.offset.y = this._offset.y * this._scale.y;
+
+		//scale size
 		this.size.x = this._size.x * this._scale.x;
 		this.size.y = this._size.y * this._scale.y;
-		this.pos.x += old.x - this.size.x;
-		this.pos.y += old.y - this.size.y; 
+
+		//offset entity's position by the change in size
+		this.pos.x += oX - this.size.x;
+		this.pos.y += oY - this.size.y; 
 	}
  
 });
