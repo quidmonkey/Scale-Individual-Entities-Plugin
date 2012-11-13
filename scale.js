@@ -62,8 +62,8 @@ ig.Entity.inject({
 		this.size.y = this._size.y * this._scale.y;
 
 		//offset entity's position by the change in size
-		this.pos.x += oX - this.size.x;
-		this.pos.y += oY - this.size.y; 
+		this.pos.x += (oX - this.size.x) / 2;
+		this.pos.y += (oY - this.size.y) / 2; 
 	}
  
 });
